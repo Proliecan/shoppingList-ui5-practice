@@ -1,11 +1,39 @@
 {
-    "items": [
+    "lists":[
         {
-            "name": "Bread",
-            "quantity": "1"
+            "name": "Items",
+            "items":[
+                {
+                    "name": "Bread",
+                    "quantity": 1
+                },
+                {
+                    "name": "Milk",
+                    "quantity": 2
+                },
+                {
+                    "name": "Eggs",
+                    "quantity": 12
+                }
+            ]
+        }, 
+        {
+            "name": "Bought in the past",
+            "items":[
+                {
+                    "name": "Steve",
+                    "quantity": 1
+                },
+                {
+                    "name": "Troja",
+                    "quantity": 2
+                },
+                {
+                    "name": "NPCs slaughtered",
+                    "quantity": 12
+                }
+            ],
+            "editable": "false"
         }
-    ],
-    "bought": [{
-
-    }]
+    ]
 }

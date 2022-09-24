@@ -1,12 +1,19 @@
 <mvc:View controllerName="sl.ns.shoppinglistmodule.controller.MainView" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
     <Page id="page" title="{i18n>title}" class="sapUiContentPadding">
         <content>
-            <List id="list" mode="Delete" growing="true" growingScrollToLoad="true" growingThreshold="5" growingTriggerText="Load more" growingDirection="Downwards" items="{/items}" delete="onDelete">
+            <TabContainer items="{/lists}" id="tabContainer">
                 <items>
-                    <ObjectListItem id="item" title="{name}" number="{quantity}" type="Inactive" >
-                    </ObjectListItem>
+                    <TabContainerItem name="{name}">
+                        <content>
+                            <List id="list" mode="delete" delete="onDelete" growing="true" growingScrollToLoad="true" growingThreshold="5" growingTriggerText="Load more" items="{items}">
+                                <items>
+                                    <ObjectListItem id="item" title="{name}" number="{quantity}" type="DetailAndActive" detailPress="onItemDetailPress" />
+                                </items>
+                            </List>
+                        </content>
+                    </TabContainerItem>
                 </items>
-            </List>
+            </TabContainer>
         </content>
         <footer>
             <Toolbar>
