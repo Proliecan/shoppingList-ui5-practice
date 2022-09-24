@@ -2,7 +2,7 @@
   "name": "shopping-list-module",
   "version": "0.0.1",
   "private": true,
-  "description": "Fiori cpmpliant Shoppoing lsit",
+  "description": "Fiori compliant shopping list",
   "keywords": [
     "ui5",
     "openui5",
