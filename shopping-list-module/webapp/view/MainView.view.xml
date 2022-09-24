@@ -1,7 +1,7 @@
 <mvc:View controllerName="sl.ns.shoppinglistmodule.controller.MainView" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
     <Page id="page" title="{i18n>title}" class="sapUiContentPadding">
         <content>
-            <TabContainer items="{/lists}" id="tabContainer">
+            <TabContainer items="{/lists}" id="tabContainer" itemSelect="onTabChanged">
                 <items>
                     <TabContainerItem name="{name}">
                         <content>

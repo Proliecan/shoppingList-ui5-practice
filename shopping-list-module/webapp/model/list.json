@@ -33,7 +33,7 @@
                     "quantity": 12
                 }
             ],
-            "editable": "false"
+            "editable": false
         }
     ]
 }
