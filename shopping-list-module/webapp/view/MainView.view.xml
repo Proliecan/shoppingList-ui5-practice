@@ -1,7 +1,19 @@
-<mvc:View controllerName="sl.ns.shoppinglistmodule.controller.MainView"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content />
+<mvc:View controllerName="sl.ns.shoppinglistmodule.controller.MainView" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+    <Page id="page" title="{i18n>title}" class="sapUiContentPadding">
+        <content>
+            <List id="list" mode="Delete" growing="true" growingScrollToLoad="true" growingThreshold="5" growingTriggerText="Load more" growingDirection="Downwards" items="{/items}" delete="onDelete">
+                <items>
+                    <ObjectListItem id="item" title="{name}" number="{quantity}" type="Inactive" >
+                    </ObjectListItem>
+                </items>
+            </List>
+        </content>
+        <footer>
+            <Toolbar>
+                <ToolbarSpacer />
+                <Input id="input" placeholder="Enter new item" value="{/newItem}" submit="onAdd" />
+                <Button icon="sap-icon://add" press="onAdd" />
+            </Toolbar>
+        </footer>
     </Page>
 </mvc:View>
