@@ -55,7 +55,9 @@
         "sap.ui.comp": {},
         "sap.ui.generic.app": {},
         "sap.ui.table": {},
-        "sap.ushell": {}
+        "sap.ushell": {},
+        "sap.ui.webc.main": {},
+				"sap.ui.layout": {}
       }
     },
     "contentDensities": {

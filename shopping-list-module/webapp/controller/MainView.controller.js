@@ -3,9 +3,16 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
-    "sap/m/MessageToast"
+    "sap/m/MessageToast",
+    "sap/m/Dialog",
+    "sap/m/Button",
+    "sap/m/ButtonType",
+    "sap/m/Input",
+    "sap/ui/layout/HorizontalLayout",
+    "sap/m/Label",
+    "sap/ui/core/VerticalAlign"
 ],
-    function (Controller, JSONModel, MessageToast) {
+    function (Controller, JSONModel, MessageToast, Dialog, Button, ButtonType, Input, HorizontalLayout, Label, VerticalAlign) {
         "use strict";
 
         return Controller.extend("sl.ns.shoppinglistmodule.controller.MainView", {
@@ -23,6 +30,9 @@ sap.ui.define([
             onInit: function () {
                 let oModel = new JSONModel();
                 oModel.loadData("/model/list.json");
+                let data = oModel.getData();
+                data.listMode = "DetailAndActive";
+                oModel.setData(data);
                 this.getView().setModel(oModel);
             },
             onAdd: function (oEvent) {
@@ -50,21 +60,28 @@ sap.ui.define([
                 // find list with name in model.lists
                 let list = data.lists.find(list => list.name === name);
 
+                let editable = true;
+                if (list.editable === false) editable = false;
+
                 let input = this.getInput();
                 input.setValue("");
-                if (list.editable != null) {
-                    input.setEnabled(list.editable);
-                }
-                else
+                if (editable) {
                     input.setEnabled(true);
+                    data.listMode = "DetailAndActive";
+                } else {
+                    input.setEnabled(false);
+                    data.listMode = "Inactive";
+                }
+                oModel.setData(data);
+                this.getView().setModel(oModel);
             },
             onItemPress: function (oEvent) {
                 let item = oEvent.getSource().getBindingContext().getObject();
-                
+
                 let oModel = this.getView().getModel();
                 let data = oModel.getData();
 
-                
+
                 let al = this.getActiveListIndex();
                 // if list is not editable, do nothing
                 if (data.lists[al].editable === false) {
