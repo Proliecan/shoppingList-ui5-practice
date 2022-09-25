@@ -28,6 +28,10 @@ sap.ui.define([
             onAdd: function (oEvent) {
                 let input = this.getInput();
                 let value = input.getValue();
+                if (value === "") {
+                    return;
+                }
+
                 input.setValue("");
 
                 let oModel = this.getView().getModel();
