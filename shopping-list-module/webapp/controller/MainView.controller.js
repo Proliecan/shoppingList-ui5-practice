@@ -53,8 +53,35 @@ sap.ui.define([
                 }
                 else
                     input.setEnabled(true);
+            },
+            onItemPress: function (oEvent) {
+                let item = oEvent.getSource().getBindingContext().getObject();
+                
+                let oModel = this.getView().getModel();
+                let data = oModel.getData();
 
+                
+                let al = this.getActiveListIndex();
+                // if list is not editable, do nothing
+                if (data.lists[al].editable === false) {
+                    MessageToast.show("List not editable");
+                    return;
+                }
+                // go through each element of active list
+                for (let i = 0; i < data.lists[al].items.length; i++) {
+                    // if item is found, remove it
+                    if (data.lists[al].items[i] == item) {
+                        data.lists[al].items.splice(i, 1);
+                        break;
+                    }
+                }
+                //add item to done list
+                data.lists.find(list => list.id === "Done").items.push(item);
+                // APPLY CHANGES TO MODEL
+                oModel.setData(data);
+                this.getView().setModel(oModel);
 
+                MessageToast.show("Item removed");
             }
         });
     });

@@ -18,6 +18,7 @@
             ]
         }, 
         {
+            "id": "Done",
             "name": "Bought in the past",
             "items":[
                 {
